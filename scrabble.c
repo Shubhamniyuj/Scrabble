@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<string.h>
 #include<ctype.h>
 
 #define SIZE 255
@@ -34,23 +33,16 @@ int main()
  
 int compute_score(char *word)
 {
-  int score=0,tmp;
+  int score=0;
   int points[]={1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10};
-  int n = strlen(word);
-  for(int i=0; i<n; i++)
+
+  for(int i=0; word[i]!='\0'; i++)
   {
    if(isupper(word[i]))
-   tmp= points[word[i]-65];
+   score+= points[word[i]-'A'];
       
    else if(islower(word[i]))
-   tmp= points[word[i]-97];
-   
-   else
-   {
-    tmp= 0;
-   }
-
- score+=tmp;
+   score+= points[word[i]-'a'];
   }
   return score;
 }
